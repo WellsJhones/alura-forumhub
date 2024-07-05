@@ -20,3 +20,6 @@ Forum Hub is a forum management application developed using Java, Spring Boot, a
 -DATABASE_FORUM = name of the database
 -USER_FORUM_DATABASE = user of the database
 -DATABASE_FORUM_PASSWORD = password of the database
+
+# Problems
+- spring security is not working 403 error every time 
