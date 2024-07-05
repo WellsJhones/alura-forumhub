@@ -8,7 +8,9 @@ import jakarta.validation.Valid;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +32,10 @@ public class TopicoControler {
         return ResponseEntity.created(uri).body(new DadosDetalhamentoTopico(criado));
     }
     @GetMapping
-    public ResponseEntity <Page<DadosListagemTopico>> listar(Pageable paginacao){
-        var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemTopico::new);
-        return ResponseEntity.ok(page);
+    public ResponseEntity<Page<DadosListagemTopico>> listar(@RequestParam(defaultValue = "0") int page){
+        Pageable paginacao = PageRequest.of(page, 10, Sort.Direction.ASC, "id");
+        var pageResult = repository.findAllByAtivoTrue(paginacao).map(DadosListagemTopico::new);
+        return ResponseEntity.ok(pageResult);
     }
 
     @PutMapping

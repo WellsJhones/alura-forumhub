@@ -34,6 +34,9 @@ public class Topico {
     private String autor;
     private String data_postagem;
 
+    @Enumerated(EnumType.STRING)
+    private TopicoStatus status;
+
 
     public void atualizarInformacoes(DadosAtualizacaoTopico dados) {
         if(dados.titulo() != null){
