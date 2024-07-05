@@ -1,12 +1,16 @@
 package br.com.alura.forumhub.forum.hub.service;
 
 import br.com.alura.forumhub.forum.hub.domain.topico.Topico;
+import br.com.alura.forumhub.forum.hub.domain.topico.TopicoStatus;
 import br.com.alura.forumhub.forum.hub.dto.DadosCadastroTopico;
 import br.com.alura.forumhub.forum.hub.repository.CursoRepository;
 import br.com.alura.forumhub.forum.hub.repository.TopicoRepository;
 import br.com.alura.forumhub.forum.hub.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class TopicoService {
@@ -25,6 +29,12 @@ public class TopicoService {
         topico.setAtivo(true);
         topico.setTitulo(dados.titulo());
         topico.setMensagem(dados.mensagem());
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        topico.setData_postagem(now.format(formatter));
+
+        topico.setStatus(TopicoStatus.NAO_RESPONDIDO);
+
         if(usuarioRepository.findById(dados.usuarioid()).isPresent()){
             topico.setAutor(usuarioRepository.findById(dados.usuarioid()).get().getNome());
         }else{
@@ -40,5 +50,4 @@ public class TopicoService {
         return topicoRepository.save(topico);
     }
 
-    // Rest of your service methods...
 }
