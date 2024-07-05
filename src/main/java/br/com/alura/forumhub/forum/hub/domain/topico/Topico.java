@@ -32,6 +32,7 @@ public class Topico {
     private boolean ativo = true;
     @Column(name = "autor")
     private String autor;
+    private String data_postagem;
 
 
     public void atualizarInformacoes(DadosAtualizacaoTopico dados) {

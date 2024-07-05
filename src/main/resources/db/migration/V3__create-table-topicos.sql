@@ -6,6 +6,7 @@ create table postagens(
     ativo tinyint,
     curso varchar (100) not null,
     autor varchar(100) not null,
+    data_postagem varchar(100) not null,
 
 
     primary key(id)
