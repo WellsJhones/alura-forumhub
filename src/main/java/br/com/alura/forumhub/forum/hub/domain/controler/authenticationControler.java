@@ -2,6 +2,7 @@ package br.com.alura.forumhub.forum.hub.domain.controler;
 
 import br.com.alura.forumhub.forum.hub.domain.usuario.Usuario;
 import br.com.alura.forumhub.forum.hub.dto.DadosAutenticacao;
+import br.com.alura.forumhub.forum.hub.infra.security.DadosTokenJWT;
 import br.com.alura.forumhub.forum.hub.infra.security.TokenService;
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
@@ -35,11 +36,11 @@ public class authenticationControler {
         assert dados != null : "DadosAutenticacao is null";
         assert dados.email() != null : "Email is null";
         assert dados.senha() != null : "Senha is null";
-        var token = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
-        assert token != null : "UsernamePasswordAuthenticationToken is null";
-
-        var authentication = manager.authenticate(token);
-        return ResponseEntity.ok(tokenService.gerarToken((Usuario)authentication.getPrincipal()));
+        var tokenJwt = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
+        assert tokenJwt != null : "UsernamePasswordAuthenticationToken is null";
+        var authentication = manager.authenticate(tokenJwt);
+        var token =tokenService.gerarToken((Usuario)authentication.getPrincipal());
+        return ResponseEntity.ok(new DadosTokenJWT(token));
     }
 }
 //ahaa

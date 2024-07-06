@@ -17,6 +17,7 @@ public class TokenService {
         try {
             var algoritmo = Algorithm.HMAC256("12345678");
             return JWT.create()
+                    .withIssuer("API Forum_hub")
                     .withSubject(usuario.getEmail())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
