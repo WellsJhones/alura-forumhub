@@ -8,3 +8,4 @@ public record DadosDetalhamentoTopico( String titulo, String mensagem, String au
         this(topico.getTitulo(), topico.getMensagem(), topico.getAutor(),topico.getData_postagem(), String.valueOf(topico.getStatus()));
     }
 }
+//ahaa

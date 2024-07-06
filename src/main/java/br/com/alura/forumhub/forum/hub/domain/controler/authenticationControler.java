@@ -42,3 +42,4 @@ public class authenticationControler {
         return ResponseEntity.ok(tokenService.gerarToken((Usuario)authentication.getPrincipal()));
     }
 }
+//ahaa

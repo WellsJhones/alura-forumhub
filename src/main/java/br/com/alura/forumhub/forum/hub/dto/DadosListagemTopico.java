@@ -9,3 +9,4 @@ public record DadosListagemTopico(String titulo, String mensagem, String autor,S
         this(topico.getTitulo(), topico.getMensagem(), topico.getAutor(), topico.getCurso());
     }
 }
+//ahaa

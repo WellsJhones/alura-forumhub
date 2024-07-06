@@ -8,3 +8,4 @@ public record DadosCadastroCurso (
         @NotBlank String nome,
         @NotNull Categoria categoria) {
 }
+//ahaa

@@ -8,3 +8,4 @@ public record DadosListagemCursos(String nome, String categoria, Long id) {
         this(curso.getNome(), String.valueOf(curso.getCategoria()), curso.getId());
     }
 }
+//ahaa
