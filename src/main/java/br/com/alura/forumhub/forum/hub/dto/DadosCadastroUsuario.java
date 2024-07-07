@@ -9,3 +9,4 @@ public record DadosCadastroUsuario(
         @NotBlank @Email String email,
         @NotNull  String senha) {
 }
+//ahaa

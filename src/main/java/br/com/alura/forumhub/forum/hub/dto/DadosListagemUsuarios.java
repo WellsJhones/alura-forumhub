@@ -10,3 +10,4 @@ public record DadosListagemUsuarios(String nome, String Email, Long id) {
         this(usuario.getNome(), usuario.getEmail(), usuario.getId());
     }
 }
+//ahaa

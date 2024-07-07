@@ -7,3 +7,4 @@ public record DadosDetalhamentoCurso(Long id, String nome, String categoria) {
         this(curso.getId(), curso.getNome(), curso.getCategoria().name());
     }
 }
+//ahaa

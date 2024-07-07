@@ -7,3 +7,4 @@ public record DadosDetalhamentoUsuario(Long id, String nome, String email) {
         this(usuario.getId(), usuario.getNome(), usuario.getEmail());
     }
 }
+//ahaa
